@@ -1,0 +1,58 @@
+Testing Strategy for Assignment 2
+
+I tested the hash table step by step before using it in pcode.c.
+Instead of doing everything at once, I made small test programs to check each function.
+
+1. Basic hash table test
+File: testing/test_ht.c
+
+What I did:
+- Created a hash table
+- Inserted a few key/value pairs
+- Looked up an existing key
+- Removed a key
+- Checked lookup again after removal
+
+What I expected:
+- lookup should return the correct value
+- after removal, lookup should return NULL
+
+This test helped me confirm that the basic operations (insert, lookup, remove, free) were working properly.
+
+
+2. Resize test
+File: testing/test_resize.c
+
+What I did:
+- Inserted around 20 different keys and values
+- This was enough to trigger resizing of the table
+- After inserting everything, I looked up all keys again
+
+What I expected:
+- all keys should still be found after resizing
+
+This test was important because resizing is a big part of the assignment,
+and it helped me confirm that old data is not lost after the table grows.
+
+
+3. Update test
+File: testing/test_update.c
+
+What I did:
+- Inserted a key with one value
+- Inserted the same key again with a different value
+- Looked up the key after that
+
+What I expected:
+- the value should be updated to the new one
+
+This test made sure that inserting an existing key replaces the value instead of creating a duplicate.
+
+
+4. General approach
+
+I focused on testing the hash table separately first, since pcode.c depends on it.
+Once the hash table was working correctly, I used it inside pcode.c and 
+manually tested the program by running it with input files and typing city names.
+
+Overall, I tested each feature in isolation first, then combined everything together.
