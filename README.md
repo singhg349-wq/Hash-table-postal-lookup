@@ -1,5 +1,5 @@
 
-```markdown
+
 # Hash Table / Postal Code Lookup
 
 A hash table implementation in C using open addressing with linear probing, tombstone deletion, and dynamic resizing — built as a general-purpose key/value store, then used as the engine behind a small postal code lookup tool.
@@ -87,4 +87,4 @@ All three pass cleanly under Valgrind with zero leaks and zero errors. See `test
 ## Author
 
 Gurshmeer Singh
-```
+
