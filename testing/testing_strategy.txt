@@ -1,4 +1,4 @@
-Testing Strategy for Assignment 2
+Testing Strategy for the postal code lookup
 
 I tested the hash table step by step before using it in pcode.c.
 Instead of doing everything at once, I made small test programs to check each function.
@@ -14,8 +14,8 @@ What I did:
 - Checked lookup again after removal
 
 What I expected:
-- lookup should return the correct value
-- after removal, lookup should return NULL
+- Lookup should return the correct value
+- After removal, lookup should return NULL
 
 This test helped me confirm that the basic operations (insert, lookup, remove, free) were working properly.
 
@@ -24,15 +24,14 @@ This test helped me confirm that the basic operations (insert, lookup, remove, f
 File: testing/test_resize.c
 
 What I did:
-- Inserted around 20 different keys and values
+- Inserted 20 different keys and values
 - This was enough to trigger resizing of the table
 - After inserting everything, I looked up all keys again
 
 What I expected:
-- all keys should still be found after resizing
+- All keys should still be found after resizing
 
-This test was important because resizing is a big part of the assignment,
-and it helped me confirm that old data is not lost after the table grows.
+This test was important because resizing is a big part of the assignment, and it helped me confirm that old data is not lost after the table grows.
 
 
 3. Update test
@@ -44,7 +43,7 @@ What I did:
 - Looked up the key after that
 
 What I expected:
-- the value should be updated to the new one
+- The value should be updated to the new one, not duplicated
 
 This test made sure that inserting an existing key replaces the value instead of creating a duplicate.
 
@@ -52,7 +51,11 @@ This test made sure that inserting an existing key replaces the value instead of
 4. General approach
 
 I focused on testing the hash table separately first, since pcode.c depends on it.
-Once the hash table was working correctly, I used it inside pcode.c and 
-manually tested the program by running it with input files and typing city names.
+Once the hash table was working correctly, I used it inside pcode.c and manually
+tested the program by running it with input files and typing city names.
+
+All three tests above also passed cleanly under Valgrind with no memory leaks
+or errors, confirming the hash table frees memory correctly on removal, resizing,
+and program exit.
 
 Overall, I tested each feature in isolation first, then combined everything together.
